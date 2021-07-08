@@ -19,6 +19,16 @@
       padding: 0;
     }
 
+    #app {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      height: calc(100vh - 86px);
+      overflow: auto;
+    }
+
     .title h2 {
       text-align: center;
       padding: 15px 8px;
@@ -42,12 +52,18 @@
       text-align: center;
       padding: 15px 8px;
     }
+
+    .music {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <div>
+    <div class="container">
       <div class="title">
         <h2>爱我们家小宝贝，🙂</h2>
       </div>
@@ -56,6 +72,11 @@
         <div class="title">我和你</div>
       </div>
       <div class="end">未完待续。。。</div>
+    </div>
+
+    <div class="music">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86
+        src="//music.163.com/outchain/player?type=2&id=29800402&auto=1&height=66"></iframe>
     </div>
   </div>
 

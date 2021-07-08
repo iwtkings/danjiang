@@ -8,16 +8,20 @@
   <title>丹江大观苑</title>
   <!-- vue -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <!-- 引入样式文件 -->
+  <!-- 引入 Vant 的 样式文件 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" />
-  <!-- 引入 Vue 和 Vant 的 JS 文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+  <!-- 引入 Vant 的 JS 文件 -->
   <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
 
   <style>
     * {
       margin: 0;
       padding: 0;
+    }
+
+    .title h2 {
+      text-align: center;
+      padding: 15px 8px;
     }
 
     .div_img img {
@@ -29,20 +33,35 @@
       font-weight: 700;
       padding: 15px 15px;
     }
+
+
+    .end {
+      color: red;
+      font-size: 25px;
+      font-weight: 700;
+      text-align: center;
+      padding: 15px 8px;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
     <div>
+      <div class="title">
+        <h2>爱我们家小宝贝，🙂</h2>
+      </div>
       <div class="div_img" v-for="(item, index) in imgs" :key="index">
-        <img :src="item.url" alt="">
+        <img :src="item.url" alt="" v-on:click="onPreview(index)">
         <div class="title">我和你</div>
       </div>
+      <div class="end">未完待续。。。</div>
     </div>
   </div>
 
   <script>
+    Vue.use(vant.ImagePreview);
+
     var app = new Vue({
       el: '#app',
       data: {
@@ -52,9 +71,19 @@
       mounted() {
         for (let index = 1057; index < 1100; index++) {
           this.imgs.push({
+            id: index,
             url: './imgs/' + 'IMG_' + index + '.JPG',
-
+            title: '我和你'
           })
+        }
+      },
+      methods: {
+        onPreview(index) {
+          console.log(index);
+          // ImagePreview({
+          //   images: this.imgs,
+          //   startPosition: index,
+          // });
         }
       }
     })
